@@ -1,0 +1,19 @@
+PATH
+  remote: .
+  specs:
+    rowdb (0.1.0)
+      oj
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    oj (3.10.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  rowdb!
+
+BUNDLED WITH
+   2.1.4
