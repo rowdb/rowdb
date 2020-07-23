@@ -1,0 +1,9 @@
+# Gems.
+/.bundle/
+/pkg/
+
+# Mac.
+.DS_Store
+
+# Editors.
+.idea*
