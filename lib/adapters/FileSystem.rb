@@ -1,10 +1,11 @@
+require 'oj'
 require_relative 'Adapter.rb'
 
 class FileSystem < Adapter
 
   def read()
 
-    p Oj.load_file(@source)
+    Oj.load_file(@source)
 
   end
 
