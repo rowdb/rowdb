@@ -7,3 +7,6 @@
 
 # Editors.
 .idea*
+
+# Database.
+db.json

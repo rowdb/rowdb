@@ -1,7 +1,7 @@
 require 'oj'
 require_relative 'adapters/FileSystem.rb'
 
-class Rehash
+class Rowdb
 
   def initialize(adapter = :file_system, filepath)
     @adapter = self.send(adapter, filepath)
