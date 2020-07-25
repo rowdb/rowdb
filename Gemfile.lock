@@ -3,11 +3,13 @@ PATH
   specs:
     rowdb (0.1.0)
       oj
+      rudash
 
 GEM
   remote: https://rubygems.org/
   specs:
-    oj (3.10.7)
+    oj (3.10.8)
+    rudash (4.1.1)
 
 PLATFORMS
   ruby
