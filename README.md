@@ -1,6 +1,15 @@
-# Rowdb
+<p align="center">
 
-[![MPLv2 License](https://img.shields.io/badge/license-MPLv2-blue.svg?style=flat-square)](https://www.mozilla.org/MPL/2.0/)
+  <img src="./Assets/Logo.svg" raw=true width="500" style="margin-left: auto; margin-right: auto;"/>
+
+</p>
+<p align="center">
+
+  <a href="https://www.mozilla.org/MPL/2.0/" alt="MPLv2 License">
+    <img src="https://img.shields.io/badge/license-MPLv2-blue.svg" />
+  </a>
+
+</p>
 
 A JSON database for Ruby inspired by [lowdb](https://github.com/typicode/lowdb).
 
