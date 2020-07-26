@@ -8,6 +8,10 @@
   <a href="https://www.mozilla.org/MPL/2.0/" alt="MPLv2 License">
     <img src="https://img.shields.io/badge/license-MPLv2-blue.svg" />
   </a>
+  
+  <a href="https://rubygems.org/gems/rowdb">
+    <img src="https://badge.fury.io/rb/rowdb.svg" alt="Gem Version" />
+  </a>
 
 </p>
 
