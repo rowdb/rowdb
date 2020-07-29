@@ -8,7 +8,6 @@
   <a href="https://www.mozilla.org/MPL/2.0/" alt="MPLv2 License">
     <img src="https://img.shields.io/badge/license-MPLv2-blue.svg" />
   </a>
-  
   <a href="https://rubygems.org/gems/rowdb">
     <img src="https://badge.fury.io/rb/rowdb.svg" alt="Gem Version" />
   </a>
@@ -24,9 +23,21 @@ Load the database:
 db = Rowdb.new(:file_system, 'db.json')
 ```
 
-Create a default structure:
+Set a default structure:
 ```ruby
-db.defaults({ items: [] })
+db.defaults({ 'checklist' => [] })
+```
+
+Add data:
+```ruby
+db.set('checklist[0]', 'milk')
+db.set('checklist[1]', 'cheese')
+db.set('checklist[2]', 'eggs')
+```
+
+Get data:
+```ruby
+db.get('checklist') # => ["milk", "cheese", "eggs"]
 ```
 
 ## Installation

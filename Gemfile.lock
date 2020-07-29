@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rowdb (0.1.1)
+    rowdb (0.1.4)
       oj
       rudash
 

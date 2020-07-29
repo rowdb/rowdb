@@ -1,8 +1,8 @@
 Gem::Specification.new do |spec|
 
   spec.name        = 'rowdb'
-  spec.version     = '0.1.3'
-  spec.date        = '2020-07-23'
+  spec.version     = '0.1.4'
+  spec.date        = '2020-07-29'
   spec.authors     = ["Maedi Prichard"]
   spec.email       = 'maediprichard@gmailcom'
 

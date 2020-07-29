@@ -8,17 +8,22 @@ class Rowdb
     @data = @adapter.read()
   end
 
-  def defaults(hash)
-    json = Oj.dump(hash)
-    @adapter.write(json)
+  def defaults(data)
+    if @data.nil?
+      # Load default data.
+      @data = data
+      # Save data to disk.
+      @adapter.write(data)
+    end
   end
 
   def get(path)
-    R_.get(@adapter.source, path)
+    R_.get(@data, path)
   end
 
   def set(path, value)
     @data = R_.set(@data, path, value)
+    @adapter.write(@data)
   end
 
   private
