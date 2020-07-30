@@ -1,35 +1,45 @@
 require 'rudash'
-require_relative 'adapters/FileSystem.rb'
+require_relative 'adapters/Sync.rb'
 
 class Rowdb
 
   def initialize(adapter = :file_system, file_path)
     @adapter = self.send(adapter, normalize_path(file_path))
-    @data = @adapter.read()
+    @data = R_.chain(@adapter.read())
   end
 
   def defaults(data)
-    if @data.nil?
+    if @data.value().nil?
       # Load default data.
-      @data = data
+      @data = R_.chain(data)
       # Save data to disk.
       @adapter.write(data)
     end
+    self
   end
 
   def get(path)
-    R_.get(@data, path)
+    @data.get(path)
+    self
   end
 
   def set(path, value)
-    @data = R_.set(@data, path, value)
-    @adapter.write(@data)
+    @data.set(path, value)
+    self
+  end
+
+  def value()
+    @data.value()
+  end
+
+  def write()
+    @adapter.write(@data.value())
   end
 
   private
 
-  def file_system(file_path)
-    FileSystem.new(file_path)
+  def sync(file_path)
+    Sync.new(file_path)
   end
 
   ##

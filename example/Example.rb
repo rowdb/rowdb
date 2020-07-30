@@ -7,16 +7,19 @@ require_relative '../lib/rowdb.rb'
 
 # Call from project root with command:
 #   ./example/Example.rb
-db = Rowdb.new(:file_system, 'example/db.json')
+
+# Load the database.
+db = Rowdb.new(:sync, 'example/db.json')
 
 # Set a default structure.
 db.defaults({ 'checklist' => [] })
 
 # Add data.
 db.set('checklist[0]', 'milk')
-db.set('checklist[1]', 'cheese')
-db.set('checklist[2]', 'eggs')
+  .set('checklist[1]', 'cheese')
+  .set('checklist[2]', 'eggs')
+  .write()
 
 # Get data.
-data = db.get('checklist')
+data = db.get('checklist').value()
 p data

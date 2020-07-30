@@ -14,30 +14,25 @@
 
 </p>
 
-A JSON database for Ruby inspired by [lowdb](https://github.com/typicode/lowdb).
+A local JSON database for Ruby inspired by [lowdb](https://github.com/typicode/lowdb), using [Rudash](https://github.com/Attrash-Islam/rudash) for easy Hash traversal.
 
 ## Usage
 
-Load the database:
 ```ruby
-db = Rowdb.new(:file_system, 'db.json')
-```
+# Load the database.
+db = Rowdb.new(:sync, 'db.json')
 
-Set a default structure:
-```ruby
+# Set a default structure.
 db.defaults({ 'checklist' => [] })
-```
 
-Add data:
-```ruby
+# Add data.
 db.set('checklist[0]', 'milk')
-db.set('checklist[1]', 'cheese')
-db.set('checklist[2]', 'eggs')
-```
+  .set('checklist[1]', 'cheese')
+  .set('checklist[2]', 'eggs')
+  .write()
 
-Get data:
-```ruby
-db.get('checklist') # => ["milk", "cheese", "eggs"]
+# Get data.
+db.get('checklist').value() # => ["milk", "cheese", "eggs"]
 ```
 
 ## Installation
@@ -52,7 +47,7 @@ Then run:
 bundle install
 ```
 
-Or:
+Or install globally with:
 ```
 gem install rowdb
 ```
@@ -63,14 +58,59 @@ I needed to store data for [Reflekt](https://github.com/maedi/reflekt) in the fi
 
 ## API
 
+All methods return a `Rowdb` instance which you can chain other methods on.
+
 ### new()
 
 ```ruby
-Rowdb.new(adapter = :file_system, file_name)
+Rowdb.new(adapter = :sync, file_name)
 ```
 
 **Params:**
-* `adapter` - The method to read and write data. Defaults to the file system.
+* `adapter` - The method to read and write data. Defaults to a synchronous file system.
 * `file_name` - The path to the file. Accepts path relative to application root or absolute path.
 
-**Returns:** `Rowdb` - A database to interact with.
+### defaults()
+
+```ruby
+Rowb.defaults(data)
+```
+
+**Params:**
+* Hash `data` - The default structure of the database.
+
+
+### get()
+
+```ruby
+Rowdb.get(path)
+```
+
+**Params:**
+* String `path` - The path query mirroring [Rudash API](https://rudash-website.now.sh/).
+
+### set()
+
+```ruby
+Rowdb.set(path, value)
+```
+
+**Params:**
+* String `path` - The path query mirroring [Rudash API](https://rudash-website.now.sh/).
+* Object `value` - The value you wish to store.
+
+### value()
+
+```ruby
+Rowdb.value()
+```
+
+**Returns:** The value stored in the database.
+
+### write()
+
+```ruby
+Rowdb.write()
+```
+
+Saves the data to the file system.
