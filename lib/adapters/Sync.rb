@@ -1,7 +1,10 @@
 require 'oj'
 require_relative 'Adapter.rb'
 
-class FileSystem < Adapter
+##
+# Synchronous file system.
+##
+class Sync < Adapter
 
   ##
   # Load a JSON string from a file.
