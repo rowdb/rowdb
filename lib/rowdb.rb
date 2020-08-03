@@ -3,9 +3,10 @@ require_relative 'adapters/Sync.rb'
 
 class Rowdb
 
-  def initialize(adapter = :file_system, file_path)
+  def initialize(adapter = :sync, file_path)
     @adapter = self.send(adapter, normalize_path(file_path))
     @data = R_.chain(@adapter.read())
+    @get_path = nil
   end
 
   def defaults(data)
@@ -19,6 +20,7 @@ class Rowdb
   end
 
   def get(path)
+    @get_path = path
     @data.get(path)
     self
   end
@@ -32,8 +34,20 @@ class Rowdb
     @data.value()
   end
 
+  def push(value)
+    if @get_path.nil?
+      raise StandardError.new "You must get() before push()."
+    end
+
+    index = @data.get(@get_path).value().count
+    @data.set("#{@get_path}[#{index}]", value)
+
+    self
+  end
+
   def write()
     @adapter.write(@data.value())
+    self
   end
 
   private

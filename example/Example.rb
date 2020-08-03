@@ -14,10 +14,15 @@ db = Rowdb.new(:sync, 'example/db.json')
 # Set a default structure.
 db.defaults({ 'checklist' => [] })
 
-# Add data.
+# Set data.
 db.set('checklist[0]', 'milk')
   .set('checklist[1]', 'cheese')
   .set('checklist[2]', 'eggs')
+  .write()
+
+# Push data.
+db.get('checklist')
+  .push('spam')
   .write()
 
 # Get data.
