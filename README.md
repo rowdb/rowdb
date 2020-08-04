@@ -40,6 +40,8 @@ db.get('checklist')
 db.get('checklist').value() # => ["milk", "cheese", "eggs", "spam"]
 ```
 
+Method execution is lazy, values are only returned or written after calling `value()` or `write()`.
+
 ## Installation
 
 In your Gemfile add:
@@ -102,6 +104,23 @@ Rowdb.set(path, value)
 
 **Params:**
 * String `path` - The path query mirroring [Rudash API](https://rudash-website.now.sh/).
+* Object `value` - The value you wish to store.
+
+### push()
+
+```ruby
+Rowdb.push(value)
+```
+
+Push a value onto an array. Must be chained after a `get()` which gets the array to push to.
+
+**Example:**
+```ruby
+db.get('items')
+  .push('item')
+```
+
+**Params:**
 * Object `value` - The value you wish to store.
 
 ### value()
