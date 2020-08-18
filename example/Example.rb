@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-# Access library directly. In your app use:
+# This example accesses library directly. Instead your app should use:
 #   require 'rowdb'
 require_relative '../lib/rowdb.rb'
 
@@ -9,7 +9,7 @@ require_relative '../lib/rowdb.rb'
 #   ./example/Example.rb
 
 # Load the database.
-db = Rowdb.new(:sync, 'example/db.json')
+db = Rowdb.new('example/db.json')
 
 # Set a default structure.
 db.defaults({ 'checklist' => [] })

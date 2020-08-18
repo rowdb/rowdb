@@ -20,7 +20,7 @@ A local JSON database for Ruby inspired by [lowdb](https://github.com/typicode/l
 
 ```ruby
 # Load the database.
-db = Rowdb.new(:sync, 'db.json')
+db = Rowdb.new('db.json')
 
 # Set a default structure.
 db.defaults({ 'checklist' => [] })
@@ -70,12 +70,12 @@ All methods return a `Rowdb` instance which you can chain other methods on.
 ### new()
 
 ```ruby
-Rowdb.new(adapter = :sync, file_name)
+Rowdb.new(file_name, adapter = :sync)
 ```
 
 **Params:**
-* `adapter` - The method to read and write data. Defaults to a synchronous file system.
 * `file_name` - The path to the file. Accepts path relative to application root or absolute path.
+* `adapter` - The method to read and write data. Defaults to a synchronous file system.
 
 ### defaults()
 
