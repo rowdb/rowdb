@@ -3,12 +3,6 @@ require_relative 'adapters/Sync.rb'
 
 class Rowdb
 
-  # Use Reflekt when available.
-  if Gem::Specification::find_by_name('reflekt')
-    require 'reflekt'
-    prepend Reflekt
-  end
-
   def initialize(file_path, adapter = :sync)
     @adapter = self.send(adapter, normalize_path(file_path))
     @data = R_.chain(@adapter.read())
