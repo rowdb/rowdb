@@ -16,7 +16,8 @@ class Sync < Adapter
     json = Oj.load_file(@source)
 
     unless json.nil?
-      return Oj.load(json)
+      data = Oj.load(json)
+      return data.transform_keys(&:to_sym)
     end
 
     return nil
@@ -30,7 +31,7 @@ class Sync < Adapter
   ##
   def write(data)
 
-    json = Oj.dump(data)
+    json = Oj.dump(data, mode: :compat)
     Oj.to_file(@source, json)
 
   end

@@ -5,48 +5,50 @@ class Rowdb
 
   def initialize(file_path, adapter = :sync)
     @adapter = self.send(adapter, normalize_path(file_path))
-    @data = R_.chain(@adapter.read())
+    @chain = R_.chain(@adapter.read())
     @get_path = nil
   end
 
+  # Set default data.
   def defaults(data)
-    if @data.value().nil?
-      # Load default data.
-      @data = R_.chain(data)
-      # Save data to disk.
-      @adapter.write(data)
+    if @chain.value().nil?
+      @chain = R_.chain(data.transform_keys(&:to_sym))
     end
     self
   end
 
   def get(path)
     @get_path = path
-    @data.get(path)
+    @chain.get(path)
     self
   end
 
   def set(path, value)
-    @data.set(path, value)
+    @chain.set(path, value)
     self
   end
 
   def value()
-    @data.value()
+    @chain.value()
   end
 
   def push(value)
+
     if @get_path.nil?
       raise StandardError.new "You must get() before push()."
     end
 
-    index = @data.get(@get_path).value().count
-    @data.set("#{@get_path}[#{index}]", value)
+    # Add value to end of array.
+    adder = -> (items) {
+      [*items, value]
+    }
+    R_.update(@chain.value(), @get_path, adder)
 
     self
   end
 
   def write()
-    @adapter.write(@data.value())
+    @adapter.write(@chain.value())
     self
   end
 

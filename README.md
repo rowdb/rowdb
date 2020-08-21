@@ -23,7 +23,7 @@ A local JSON database for Ruby inspired by [lowdb](https://github.com/typicode/l
 db = Rowdb.new('db.json')
 
 # Set a default structure.
-db.defaults({ 'checklist' => [] })
+db.defaults({ 'checklist' => [] }).write()
 
 # Set data.
 db.set('checklist[0]', 'milk')
