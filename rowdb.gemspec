@@ -1,13 +1,13 @@
 Gem::Specification.new do |spec|
 
   spec.name        = 'rowdb'
-  spec.version     = '0.5.1'
-  spec.date        = '2020-08-21'
+  spec.version     = '0.6.0'
+  spec.date        = '2020-10-14'
   spec.authors     = ["Maedi Prichard"]
-  spec.email       = 'maediprichard@gmailcom'
+  spec.email       = 'maediprichard@gmail.com'
 
   spec.summary     = "A local JSON database."
-  spec.description = "A local JSON database for Ruby inspired by lowdb, using Rudash for easy Hash traversal."
+  spec.description = "A local JSON database built in Ruby inspired by lowdb, using Rudash for easy Hash traversal."
   spec.homepage    = 'https://github.com/rowdb/rowdb'
   spec.license     = 'MPL-2.0'
 
