@@ -16,8 +16,15 @@ class Sync < Adapter
     json = Oj.load_file(@source)
 
     unless json.nil?
+
+      if @format == :js
+        unwrap(json)
+      end
+
+      # Parse JSON.
       data = Oj.load(json)
       return data.transform_keys(&:to_sym)
+
     end
 
     return nil
@@ -25,13 +32,18 @@ class Sync < Adapter
   end
 
   ##
-  # Save a Hash to a file as JSON.
+  # Save a Hash to a file as a JSON string or JS.
   #
   # @param Hash data
   ##
   def write(data)
 
     json = Oj.dump(data, mode: :compat)
+
+    if @format == :js
+      wrap(json)
+    end
+
     Oj.to_file(@source, json)
 
   end

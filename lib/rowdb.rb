@@ -3,10 +3,14 @@ require_relative 'adapters/Sync.rb'
 
 class Rowdb
 
-  def initialize(file_path, adapter = :sync)
-    @adapter = self.send(adapter, normalize_path(file_path))
+  def initialize(file_path, adapter = :sync, js_var = "data")
+
+    # Initialize the chosen adapter.
+    @adapter = self.send(adapter, file_path, js_var)
+
     @chain = R_.chain(@adapter.read())
     @get_path = nil
+
   end
 
   # Set default data.
@@ -54,27 +58,14 @@ class Rowdb
 
   private
 
-  def sync(file_path)
-    Sync.new(file_path)
-  end
-
   ##
-  # Normalize path.
+  # Adapters.
   #
-  # @param file_path - An absolute or relative path.
-  # @return An absolute path.
+  # The chosen adapter is initialized by the constructor.
   ##
-  def normalize_path(file_path)
 
-    # Absolute path.
-    if file_path.start_with? '/'
-      return file_path
-    # Relative path.
-    else
-      # Get directory the script executed from.
-      return File.join(Dir.pwd, '/' + file_path)
-    end
-
+  def sync(file_path, js_var)
+    Sync.new(file_path, js_var)
   end
 
 end

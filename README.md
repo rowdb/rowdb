@@ -70,12 +70,18 @@ All methods return a `Rowdb` instance which you can chain other methods on.
 ### new()
 
 ```ruby
-Rowdb.new(file_name, adapter = :sync)
+Rowdb.new(file_name, adapter = :sync, js_var = "data")
+```
+
+**Example:**
+```ruby
+db = Rowdb.new('db.json')
 ```
 
 **Params:**
-* `file_name` - The path to the file. Accepts path relative to application root or absolute path.
+* `file_name` - The path to the file. Accepts path relative to execution path or absolute path. Acceptable file extensions are ".json" and ".js".
 * `adapter` - The method to read and write data. Defaults to a synchronous file system.
+* `js_var` - The name of the variable that the JSON is assigned to when `file_name` ends in ".js".
 
 ### defaults()
 
