@@ -53,10 +53,21 @@ class Adapter
   #
   # @param String json
   ##
-  def wrap(json)
+  def wrap()
 
-    json.prepend(@prefix)
-    json << @suffix
+    new_file = ""
+
+    # Open file.
+    File.open(@source, 'r') do |file|
+      new_file = file.read
+      new_file.prepend(@prefix)
+      new_file << @suffix
+    end
+
+    # Overwrite file.
+    File.open(@source, 'w') do |file|
+      file.write(new_file)
+    end
 
   end
 
@@ -67,8 +78,11 @@ class Adapter
   ##
   def unwrap(json)
 
-    json.delete_prefix!(@prefix)
-    json.delete_suffix!(@suffix)
+    # Deletes: var data = \"
+    json.delete_prefix!(@prefix + '"')
+
+    # Deletes: \";
+    json.delete_suffix!('"' + @suffix)
 
   end
 

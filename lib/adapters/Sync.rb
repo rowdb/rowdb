@@ -13,13 +13,22 @@ class Sync < Adapter
   ##
   def read()
 
-    json = Oj.load_file(@source)
+    json = nil
 
-    unless json.nil?
-
-      if @format == :js
+    # Load JSON inside a Javascript variable.
+    if @format == :js && File.exist?(@source)
+      File.open(@source, 'r') do |file|
+        json = file.read
+        # Fix double encoding issue due to JSON string becoming Ruby string.
+        json.gsub!('\\"', '"')
         unwrap(json)
       end
+    # Load JSON string.
+    else
+      json = Oj.load_file(@source)
+    end
+
+    unless json.nil?
 
       # Parse JSON.
       data = Oj.load(json)
@@ -40,11 +49,11 @@ class Sync < Adapter
 
     json = Oj.dump(data, mode: :compat)
 
-    if @format == :js
-      wrap(json)
-    end
-
     Oj.to_file(@source, json)
+
+    if @format == :js
+      wrap()
+    end
 
   end
 
