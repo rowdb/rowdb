@@ -3,7 +3,7 @@ require_relative 'adapters/Sync.rb'
 
 class Rowdb
 
-  def initialize(file_path, adapter = :sync, js_var = "data")
+  def initialize(file_path, adapter = :sync, js_var = "db")
 
     # Initialize the chosen adapter.
     @adapter = self.send(adapter, file_path, js_var)

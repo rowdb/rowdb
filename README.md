@@ -70,7 +70,7 @@ All methods return a `Rowdb` instance which you can chain other methods on.
 ### new()
 
 ```ruby
-Rowdb.new(file_name, adapter = :sync, js_var = "data")
+Rowdb.new(file_name, adapter = :sync, js_var = "db")
 ```
 
 **Example:**
