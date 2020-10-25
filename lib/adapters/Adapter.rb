@@ -82,7 +82,9 @@ class Adapter
     json.delete_prefix!(@prefix + '"')
 
     # Deletes: \";
+    # Deletes: \";\n
     json.delete_suffix!('"' + @suffix)
+    json.delete_suffix!('"' + @suffix + "\n")
 
   end
 
