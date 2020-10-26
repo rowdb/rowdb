@@ -1,8 +1,8 @@
 Gem::Specification.new do |spec|
 
   spec.name        = 'rowdb'
-  spec.version     = '0.6.2'
-  spec.date        = '2020-10-25'
+  spec.version     = '0.6.3'
+  spec.date        = '2020-10-26'
   spec.authors     = ["Maedi Prichard"]
   spec.email       = 'maediprichard@gmail.com'
 
@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.homepage    = 'https://github.com/rowdb/rowdb'
   spec.license     = 'MPL-2.0'
 
-  spec.files         = ["lib/rowdb.rb", "lib/adapters/Adapter.rb", "lib/adapters/Sync.rb"]
+  spec.files = ["lib/rowdb.rb", "lib/adapters/Adapter.rb", "lib/adapters/Sync.rb"]
   spec.require_paths = ["lib"]
 
   spec.add_dependency "oj"
