@@ -10,10 +10,10 @@ class Adapter
   end
 
   ##
-  # Normalize path.
+  # Normalize path to absolute path.
   #
-  # @param file_path - An absolute or relative path.
-  # @return An absolute path.
+  # @param file_path [String] An absolute or relative path.
+  # @return [String] An absolute path.
   ##
   def normalize_path(file_path)
 
@@ -29,9 +29,9 @@ class Adapter
   end
 
   ##
-  # Find format.
-  #
   # Find the format of a file based on its extension.
+  #
+  # @parm file_path [String] The path to the file.
   ##
   def find_format(file_path)
 
@@ -51,7 +51,7 @@ class Adapter
   ##
   # Wrap JSON in a Javascript variable.
   #
-  # @param String json
+  # @param json [String] The stringified JSON.
   ##
   def wrap()
 
@@ -74,7 +74,7 @@ class Adapter
   ##
   # Unwrap JSON from a Javascript variable.
   #
-  # @param String json
+  # @param json [String] The stringified JSON.
   ##
   def unwrap(json)
 
