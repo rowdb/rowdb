@@ -6,7 +6,7 @@
 require_relative '../lib/rowdb.rb'
 
 # Call from project root with command:
-#   ./example/Example.rb
+#   ./example/example.rb
 
 # Load the database.
 db = Rowdb.new('example/db.json')
