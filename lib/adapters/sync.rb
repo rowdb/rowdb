@@ -1,5 +1,5 @@
 require 'oj'
-require_relative 'Adapter.rb'
+require_relative 'adapter.rb'
 
 ##
 # Synchronous file system.

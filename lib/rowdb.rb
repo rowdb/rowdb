@@ -1,5 +1,5 @@
 require 'rudash'
-require_relative 'adapters/Sync.rb'
+require_relative 'adapters/sync.rb'
 
 class Rowdb
 
