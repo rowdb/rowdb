@@ -4,6 +4,7 @@ require_relative 'adapter.rb'
 ##
 # Synchronous file system.
 ##
+class Rowdb
 class Sync < Adapter
 
   ##
@@ -57,4 +58,5 @@ class Sync < Adapter
 
   end
 
+end
 end

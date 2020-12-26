@@ -1,3 +1,4 @@
+class Rowdb
 class Adapter
 
   def initialize(file_path, js_var)
@@ -88,4 +89,5 @@ class Adapter
 
   end
 
+end
 end
