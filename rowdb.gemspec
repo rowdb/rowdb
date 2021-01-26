@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.homepage    = 'https://github.com/rowdb/rowdb'
   spec.license     = 'MPL-2.0'
 
-  spec.files = ["lib/rowdb.rb", "lib/adapters/Adapter.rb", "lib/adapters/Sync.rb"]
+  spec.files = ["lib/rowdb.rb", "lib/rowdb/adapters/adapter.rb", "lib/rowdb/adapters/sync.rb"]
   spec.require_paths = ["lib"]
 
   spec.add_dependency "oj"
