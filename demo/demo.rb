@@ -6,10 +6,10 @@
 require_relative '../lib/rowdb.rb'
 
 # Call from project root with command:
-#   ./example/example.rb
+#   ./demo/demo.rb
 
 # Load the database.
-db = Rowdb.new('example/db.json')
+db = Rowdb.new('demo/db.json')
 
 # Set a default structure.
 db.defaults({ 'checklist' => [] }).write()
