@@ -1,6 +1,6 @@
 <p align="center">
 
-  <img src="./Assets/Logo.svg" raw=true width="500" style="margin-left: auto; margin-right: auto;"/>
+  <img src="./assets/Logo.svg" raw=true width="500" style="margin-left: auto; margin-right: auto;"/>
 
 </p>
 <p align="center">
@@ -59,10 +59,6 @@ Or install globally with:
 gem install rowdb
 ```
 
-## Why?
-
-I needed to store data for [Reflekt](https://github.com/maedi/reflekt) in the file system.
-
 ## API
 
 All methods return a `Rowdb` instance which you can chain other methods on.
@@ -91,7 +87,6 @@ Rowb.defaults(data)
 
 **Params:**
 * Hash `data` - The default structure of the database.
-
 
 ### get()
 

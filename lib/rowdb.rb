@@ -1,5 +1,11 @@
+################################################################################
+# A local JSON database using Rudash for easy Hash traversal.
+#
+# @author Maedi Prichard
+################################################################################
+
 require 'rudash'
-require_relative 'rowdb/adapters/sync.rb'
+require_relative 'adapters/sync.rb'
 
 class Rowdb
 
@@ -37,7 +43,6 @@ class Rowdb
   end
 
   def push(value)
-
     if @get_path.nil?
       raise StandardError.new "You must get() before push()."
     end
