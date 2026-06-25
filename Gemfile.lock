@@ -8,7 +8,11 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    oj (3.11.1)
+    bigdecimal (4.1.2)
+    oj (3.17.3)
+      bigdecimal (>= 3.0)
+      ostruct (>= 0.2)
+    ostruct (0.6.3)
     reflekt (0.1.3)
       rowdb
     rudash (4.1.2)
